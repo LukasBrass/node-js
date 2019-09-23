@@ -9,15 +9,23 @@ app.use(bodyParser.json())
 app.get('/', (req, res) => res.send('Hello World!'))
 
 app.post('/test', (req, res) => {
-  
+
   if (req.body.msg == "ville") {
     res.send('Nous sommes à Paris');
   } else if (req.body.msg == "meteo") {
     res.send('Il fait beau');
   } else {
       res.send('Try Again');
-  }
+  } })
 
-})
+app.get('/hello', (req, res) => {
+  if (req.query.name == null) {
+    res.send('Quel est votre nom ?');
+  } else {
+      res.send('Bonjour, '+req.query.name+' !');
+  }}
+)
+
+
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
